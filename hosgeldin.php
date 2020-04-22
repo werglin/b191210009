@@ -1,3 +1,31 @@
+<!--fiter_var(eposta,FILTER_VALIDATE_EMAIL) e mail kontrolü yapar-->
+<?php
+$ad=$_POST['ad'];
+$sifre=$_POST['sifre'];
+  
+if($ad=="b191210009@sakarya.edu.tr"&&$sifre=="1234")
+{
+   	header ("Location:hosgeldin.html");
+}
+else 
+{
+    if(empty($ad) or empty($sifre)) 
+	{
+      echo "
+ 	    <center>LÜTFEN KULLANICI ADINI YADA ŞİFREYİ BOŞ BIRAKMAYINIZ..!! <a href=javascript:history.back(-1)>Geri Dön</a></center>";
+    }
+	else if(!filter_var($ad,FILTER_VALIDATE_EMAIL))
+    {   
+      echo"<center>HATALI KULLANICI ADI TARZI..!! <a href=javascript:history.back(-1)>Geri Dön</a></center>";
+    }
+    else 
+	{
+      echo "<center>KULLANICI ADI/ŞİFRE YANLIŞ.<br><a href=javascript:history.back(-1)>Geri Dön</a></center>";
+    }
+}
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,78 +37,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-     <!--Benim CSS'im-->
+    <!--Benim CSS'im-->
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">	
 </head>
 <body>
- <!--Navigasyon-->
-<nav class="navbar navbar-expend-md navbar-light bg-light ">
-<div class="container-fluid ">
-     <a class="navbar-brand" href="http://localhost/webProjeAnasayfa%20-hakk%C4%B1mda#"><img src="img/logo"></a>
-	 <button class="navbar-toggler" type="button" data-toggle="collapse"
-	 data-target="#navbarResponsive">
-	       <span class="navbar-toggler-icon"></span>
-	 </button>
-	 <div class="collapse navbar-collapse" id="navbarResponsive">
-	   <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-		    <a class="nav-link" href="http://localhost/webProjeAnasayfa%20-hakk%C4%B1mda#">Hakkımda</a>
-        </li>
-		<li class="nav-item active">
-		    <a class="nav-link" href="http://localhost/webProjeAnasayfa%20-%20%C5%9Eehrim">Şehrim</a>
-        </li>
-		<li class="nav-item">
-		    <a class="nav-link" href="http://localhost/webProjeAnasayfa%20-%20miras%C4%B1m%C4%B1z">Mirasımız</a>
-        </li>
-		<li class="nav-item">
-		    <a class="nav-link" href="http://localhost/webProjeAnasayfa%20-%C3%B6zge%C3%A7mi%C5%9F#">Özgeçmiş</a>
-        </li>
-		<li class="nav-item">
-		    <a class="nav-link" href="http://localhost/webProjeAnasayfa%20-%20ileti%C5%9Fim">İletişim</a>
-			
-        </li> 
-	   </ul>	  
- 	 </div>   
-</div>
-</nav>
-
-
- <!--Navigasyon-->
-
-
-
-
- <!--Navigasyon-->
-
-
-
-
- <!--Navigasyon-->
-
-
-
-
-
- <!--Navigasyon-->
-
-
-
-
-
- <!--Navigasyon-->
-
-
-
-
-
- <!--Navigasyon-->
-
-
-
- <!--Footer-->
- 
- 
+<!--navbar navbar-nav butonları ortaya ayarlamaya yarıyo - mt üstten boşluk bırakıyo en fazla 5-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

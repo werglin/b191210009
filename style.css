@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body
+{
+	font-family:'Roboto' , sans-serif;
+	background: url(img/bg.jpg) no-repeat center center fixed;
+	background-size: cover;
+	
+}
+.form-control
+{
+	background: rgba(255,255,255,0.1);
+	margin-top: 12px;
+	color: gray;
+	font-size:18px;
+	border-radius:1000px;
+	
+}
+.
+
+
+
+
+
+
+
