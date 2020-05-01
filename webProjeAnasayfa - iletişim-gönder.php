@@ -1,10 +1,18 @@
 <!doctype html>
+<?php
+$mail=$_POST['email'];
+$numara=$_POST['num'];
+$cinsiyet=$_POST['cinsiyet'];
+$guvenlik=$_POST['guvenlik-sorusu'];
+$bilgi=$_POST['bilgi'];
+
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -12,9 +20,9 @@
      <!--Benim CSS'im-->
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">	
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
 <body>
-
  <!--Navigasyon-->
 <nav class="navbar navbar-expend-md navbar-light bg-light">
 <div class="container-fluid">
@@ -45,89 +53,37 @@
  	 </div>   
 </div>
 </nav>
+
+<!--Girilenlerin Tablosu-->
+<div class="container">
+<h1 class="text-center text-white" style="margin-top:50px;">İletişim Sayfasında Doldurulanlar</h1>
 <br></br>
- <!--js-->
-<script type=text/javascript>
-	function kontrolet()
-	{
-	    var frm = document.forms["myform"];
-		var tc=frm.num.value;
-		var cinsiyet=frm.cinsiyet.value;
-	    var email = frm.email.value;
-	    var atpos=email.indexOf("@");
-        var dotpos=email.lastIndexOf(".");
-		if(email==null||email=="")
-		{
-		alert("E-mail girin");
-		return false;
-		}
-		if(tc==null||tc==""||tc.length!=11)
-		{
-		alert("Numara girin");
-		return false;
-		}
-		if ( atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length )
-        {
-        alert("Geçerli email adresi girin");
-        return false;
-        } 
-		if(cinsiyet==null||cinsiyet=="")
-		{
-			alert("Cinsiyetinizi girin");
-			return false;
-		}
-	}
-</script>
- <!--Navigasyon(autocomplete off - otomatik doldurmayı kapatıyo)-->
- 
- <div class="container">     
-    <form action="webProjeAnasayfa - iletişim-gönder.php" method="POST" name="myform" autocomplete="off" onsubmit="return kontrolet()" >
-	<table>
-	   <tr>
-            <td style="width:550px;" class="text-white text-center"><p>E-mail</p><input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
-	             <p>Tel No</p><input type="password" class="form-control" name="num" id="num" placeholder="Tel Num">
-				  <p class="text-light">Cinsiyet</p><input type="radio" name="cinsiyet" value="erkek" id="cins-secim">Erkek<input type="radio" name="cinsiyet" value="kadin" id="cins-secim">Kadın<input type="radio" name="cinsiyet" value="belirsiz" id="cins-secim">Belirsiz
-				 
-		  </td>
-		  <td class="text-white text-center" style="width:550px;">	  
-		      <p>Bilinen Diller (Kabaca)</p>
-			
-		      <input type="checkbox" name="dil1" value="İngilizce" id="dil-secim">İngilizce
-               <br></br>
-               <input type="checkbox" name="dil2" value="Rusça" id="dil-secim">Rusça 
-               <br></br>
-               <input type="checkbox" name="dil3" value="Almanca" id="dil-secim">Almanca
-			  <br></br>
-			  <br></br>
-		  </td>
-		</tr>
-		<tr>
-		   <td style="width:550px;" class="text-white text-center"> 
-		       <p class="lead">Güvenlik Sorusu Cevabı</p>
-		       <p >En Sevdiğin Hayvan</p>
-				<select name="guvenlik-sorusu" id="hayvan">
-				<option value=""></option>
-                <option value="kedi">Kedi</option>
-                <option value="sirtlan">Sırtlan</option>
-                <option value="at">At</option>
-                <option value="tavuk">Tavuk</option>
-                </select>
-           </td>
-		   <td class="text-center"><p class="text-white">Hakkınızda Ekstra Bilgi</p>
-		   <textarea name="bilgi" rows="5"  placeholder="Bilgiler" id="haklarında"></textarea>
-          </td>
-		</tr>
-		<tr>
-		    <td><input type="submit" class="form-control bg-dark text-light" value="GÖNDER" id="gönder"></td> 
-    </form>	 
-			<td><form action="webProjeAnasayfa - iletişim.html" autocomplete="off"><input type="submit" class="form-control bg-dark text-light" value="TEMİZLE"></form></td>
-		</tr>
-    </table>	
-
- 
+<table class="table text-center text-white">
+    <tr>
+        <td><p><?=$mail;?></p></td>
+	    <td><p><?=$numara;?></p></td>
+	</tr>
+    <tr>
+	    <td><p><?=$cinsiyet;?></p></td>
+	    <td><p style="padding-left:20px;"><?php if(isset($_POST['dil1']))
+                     {
+	                      echo $_POST['dil1']."&nbsp;&nbsp;&nbsp;&nbsp;";
+                     }
+                     if(isset($_POST['dil2']))
+                     {
+                          echo $_POST['dil2']."&nbsp;&nbsp;&nbsp;&nbsp;";
+                     }
+                     if(isset($_POST['dil3']))
+                     {
+	                      echo $_POST['dil3']."&nbsp;&nbsp;&nbsp;&nbsp;";
+                     }?></p></td>
+	</tr>
+    <tr>
+	    <td><p><?=$guvenlik;?></p></td>
+		<td><p><?=$bilgi;?></p></td>
+	</tr>
+</table>
 </div>
-
-
 
  <!--Footer-->
   <div class="container bg-gray">
@@ -150,7 +106,7 @@
  </form>
  </div>
  <br><br/>
-  
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
