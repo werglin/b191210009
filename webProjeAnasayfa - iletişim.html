@@ -55,22 +55,24 @@
 		var cinsiyet=frm.cinsiyet.value;
 	    var email = frm.email.value;
 	    var atpos=email.indexOf("@");
+		var dotposind=email.indexOf(".");
         var dotpos=email.lastIndexOf(".");
 		if(email==null||email=="")
 		{
 		alert("E-mail girin");
 		return false;
 		}
+		if ( atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length || dotposind<1 )
+        {
+        alert("Geçerli email adresi girin");
+        return false;
+        } 
 		if(tc==null||tc==""||tc.length!=11)
 		{
 		alert("Numara girin");
 		return false;
 		}
-		if ( atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length )
-        {
-        alert("Geçerli email adresi girin");
-        return false;
-        } 
+	
 		if(cinsiyet==null||cinsiyet=="")
 		{
 			alert("Cinsiyetinizi girin");
