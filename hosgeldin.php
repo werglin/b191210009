@@ -23,7 +23,7 @@ $sifre=$_POST['sifre'];
   
 if($ad=="b191210009@sakarya.edu.tr"&&$sifre=="1234")
 {
-   	header ("Location:hosgeldin.html");
+   	echo "<script>location.href='hosgeldin.html';</script>";
 }
 else 
 {
